@@ -11,11 +11,11 @@ class DetailActivity : AppCompatActivity() {
     object Extras {
         const val MATCH = "EXTRA_MATCH"
     }
+
     private lateinit var binding: ActivityDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -46,8 +46,6 @@ class DetailActivity : AppCompatActivity() {
             if (it.awayTeam.score != null) {
                 binding.tvAwayTeamScore.text = it.awayTeam.score.toString()
             }
-
-
         }
     }
 }

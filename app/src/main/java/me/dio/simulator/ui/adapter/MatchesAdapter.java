@@ -31,8 +31,8 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutinflater = LayoutInflater.from(parent.getContext());
-        MatchItemBinding binding = MatchItemBinding.inflate(layoutinflater, parent, false);
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        MatchItemBinding binding = MatchItemBinding.inflate(layoutInflater, parent, false);
         return new ViewHolder(binding);
     }
 
@@ -41,15 +41,13 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         Context context = holder.itemView.getContext();
         Match match = matches.get(position);
 
-        // Adapta os dados da partida (recuperada da API) pára o nosso layout.
+        // Adapta os dados da partida (recuperada da API) para o nosso layout.
         Glide.with(context).load(match.getHomeTeam().getImage()).circleCrop().into(holder.binding.ivHomeTeam);
         holder.binding.tvHomeTeamName.setText(match.getHomeTeam().getName());
-
         if (match.getHomeTeam().getScore() != null) {
-        holder.binding.tvHomeTeamScore.setText(String.valueOf(match.getHomeTeam().getScore()));
+            holder.binding.tvHomeTeamScore.setText(String.valueOf(match.getHomeTeam().getScore()));
         }
-
-        Glide.with(context).load(match.getHomeTeam().getImage()).circleCrop().into(holder.binding.ivAwayTeam);
+        Glide.with(context).load(match.getAwayTeam().getImage()).circleCrop().into(holder.binding.ivAwayTeam);
         holder.binding.tvAwayTeamName.setText(match.getAwayTeam().getName());
         if (match.getAwayTeam().getScore() != null) {
             holder.binding.tvAwayTeamScore.setText(String.valueOf(match.getAwayTeam().getScore()));
@@ -60,7 +58,6 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
             intent.putExtra(DetailActivity.Extras.MATCH, match);
             context.startActivity(intent);
         });
-
     }
 
     @Override
